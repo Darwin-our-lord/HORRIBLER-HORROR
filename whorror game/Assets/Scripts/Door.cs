@@ -2,34 +2,33 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject player;
     public GameObject world;
     public GameObject mirrorWorld;
 
     public bool isVertical;
+    public bool isMirrorWorld;
 
     private float entrySide;
 
     void Awake()
     {
-        player = GameObject.Find("player");
         mirrorWorld = GameObject.Find("MirrorHouse");
         world = GameObject.Find("House");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != player) return;
+        if (collision.gameObject.CompareTag("player") || collision.gameObject.CompareTag("box")) return;
 
         if (!isVertical)
         {
-            Vector2 directionToPlayer = player.transform.position - transform.position;
+            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
 
             entrySide = Vector2.Dot(directionToPlayer, transform.right);
         }
         else
         {
-            Vector2 directionToPlayer = player.transform.position - transform.position;
+            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
 
             entrySide = Vector2.Dot(directionToPlayer, transform.up);
         }
@@ -37,47 +36,39 @@ public class Door : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject != player) return;
+        if (collision.gameObject.CompareTag("player") || collision.gameObject.CompareTag("box")) return;
 
         float exitSide;
         if (!isVertical)
         {
 
-            Vector2 directionToPlayer = player.transform.position - transform.position;
+            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
             exitSide = Vector2.Dot(directionToPlayer, transform.right);
         }
         else
         {
-            Vector2 directionToPlayer = player.transform.position - transform.position;
+            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
             exitSide = Vector2.Dot(directionToPlayer, transform.up);
         }
 
 
         if (entrySide * exitSide < 0)
         {
-            ToggleMirrorWorld();
+            ToggleMirrorWorld(collision.gameObject);
         }
     }
 
-    void ToggleMirrorWorld()
+    void ToggleMirrorWorld(GameObject obj)
     {
-        PlayerController pc = player.GetComponent<PlayerController>();
 
-        if (pc.inMirrorWorld)
+        if (isMirrorWorld)
         {
-            
-            world.SetActive(false);
-            mirrorWorld.SetActive(true);
-
-            pc.inMirrorWorld = false;
+            obj.transform.position += new Vector3(1000,0,0);
         }
         else
         {
-            world.SetActive(true);
-            mirrorWorld.SetActive(false);
-
-            pc.inMirrorWorld = true;
+            obj.transform.position += new Vector3(-1000, 0, 0);
         }
-
+        if (obj.CompareTag("player")) obj.GetComponent<PlayerController>().cam.transform.position = obj.transform.position;
     }
 }
