@@ -2,24 +2,19 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject world;
-    public GameObject mirrorWorld;
 
     public bool isVertical;
     public bool isMirrorWorld;
 
     private float entrySide;
 
-    void Awake()
-    {
-        mirrorWorld = GameObject.Find("MirrorHouse");
-        world = GameObject.Find("House");
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("player") || collision.gameObject.CompareTag("box")) return;
+        Debug.Log(collision.gameObject.CompareTag("Player"));
 
+        if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Box"));
+        else return;
+        Debug.Log("AAAAAAAAAA");
         if (!isVertical)
         {
             Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
@@ -36,8 +31,10 @@ public class Door : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("player") || collision.gameObject.CompareTag("box")) return;
-
+        Debug.LogWarning("AAAAAAAAAAHHHHHHHH");
+        if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Box"));
+        else return;
+        Debug.LogWarning("AAAAAAAAAA");
         float exitSide;
         if (!isVertical)
         {
@@ -69,6 +66,6 @@ public class Door : MonoBehaviour
         {
             obj.transform.position += new Vector3(-1000, 0, 0);
         }
-        if (obj.CompareTag("player")) obj.GetComponent<PlayerController>().cam.transform.position = obj.transform.position;
+        if (obj.CompareTag("Player")) obj.GetComponent<PlayerController>().cam.transform.position = obj.transform.position;
     }
 }
