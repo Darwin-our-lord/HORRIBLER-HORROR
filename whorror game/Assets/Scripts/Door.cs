@@ -5,53 +5,64 @@ public class Door : MonoBehaviour
 
     public bool isVertical;
     public bool isMirrorWorld;
+    public bool mirrorchanger;
 
     private float entrySide;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.CompareTag("Player"));
-
         if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Box"));
         else return;
-        Debug.Log("AAAAAAAAAA");
-        if (!isVertical)
-        {
-            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
+        
+        //play door open anim
 
-            entrySide = Vector2.Dot(directionToPlayer, transform.right);
-        }
-        else
-        {
-            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
 
-            entrySide = Vector2.Dot(directionToPlayer, transform.up);
+        if (mirrorchanger)
+        {
+
+            if (!isVertical)
+            {
+                Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
+
+                entrySide = Vector2.Dot(directionToPlayer, transform.right);
+            }
+            else
+            {
+                Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
+
+                entrySide = Vector2.Dot(directionToPlayer, transform.up);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.LogWarning("AAAAAAAAAAHHHHHHHH");
         if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Box"));
         else return;
-        Debug.LogWarning("AAAAAAAAAA");
-        float exitSide;
-        if (!isVertical)
-        {
 
-            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
-            exitSide = Vector2.Dot(directionToPlayer, transform.right);
-        }
-        else
-        {
-            Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
-            exitSide = Vector2.Dot(directionToPlayer, transform.up);
-        }
+        //play door close anim
 
 
-        if (entrySide * exitSide < 0)
+        if (mirrorchanger)
         {
-            ToggleMirrorWorld(collision.gameObject);
+            float exitSide;
+            if (!isVertical)
+            {
+
+                Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
+                exitSide = Vector2.Dot(directionToPlayer, transform.right);
+            }
+            else
+            {
+                Vector2 directionToPlayer = collision.gameObject.transform.position - transform.position;
+                exitSide = Vector2.Dot(directionToPlayer, transform.up);
+            }
+
+
+            if (entrySide * exitSide < 0)
+            {
+                ToggleMirrorWorld(collision.gameObject);
+            }
         }
     }
 
