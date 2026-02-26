@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 828501925b141f04781466fec471deff
+guid: 3583fe286172bce48a602a1ecc5889d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4987120975260987871
-    second: monster animation_0
-  - first:
-      213: -2489976198986627109
-    second: monster animation_1
-  - first:
-      213: 7461177975348573432
-    second: monster animation_2
+      213: 6415797049395255557
+    second: side table_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -79,8 +73,8 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
-    textureFormat: 4
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monster animation_0
+      name: side table_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 128
-        height: 128
+        width: 118
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd1b456aa10d53540800000000000000
-      internalID: 4987120975260987871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster animation_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd78938e6d3d17dd0800000000000000
-      internalID: -2489976198986627109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster animation_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8f4be9a66dd6b8760800000000000000
-      internalID: 7461177975348573432
+      spriteID: 50914309c6d790950800000000000000
+      internalID: 6415797049395255557
       vertices: []
       indices: 
       edges: []
@@ -175,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e5519b57045467d45a86d041d7077cbc
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      monster animation_0: 4987120975260987871
-      monster animation_1: -2489976198986627109
-      monster animation_2: 7461177975348573432
+      side table_0: 6415797049395255557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
